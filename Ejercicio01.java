@@ -3,81 +3,78 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package actividad01;
-import java.io.BufferedReader; 
-import java.io.IOException; 
+package Actividad02;
+
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
  *
- * @author PC
+ * @author Alberto
  */
 public class Ejercicio01 {
-    public static void main(String[] args) throws IOException {
-        int manzanas_tienda;
-        int manzanas_queremos_comprar;
-        double precio_manzana;
-        double dinero_pagado;
+    public static void main(String[] args) throws Exception {
+        InputStreamReader variable_entrada = new InputStreamReader(System.in);
+            BufferedReader buffer = new BufferedReader(variable_entrada);
+            String op = "";
+            int valor_numerico1 = 0;
+            int valor_numerico2 = 0;
+            int incremento = 0;
+            int valor_division = 0;
+            String valor_escrito = "";
+            BufferedReader br_numero;
+            do {
+                System.out.println ("********Menu de opciones********");
+                System.out.println ("1- Establece el valor del primer número");
+                System.out.println ("2- Establece el valor del segundo número");
+                System.out.println ("3- Muestra qué número es superior o si son iguales");
+                System.out.println ("4- Divide el primer número por el segundo");
+                System.out.println ("5-Muestra la progresión numérica desde el primer número hasta el segundo");
+                System.out.println ("0-Finalizar");
+                System.out.print ("Elije la opción: ");
+                try {
+                    op = buffer.readLine();
+                    switch(Integer.parseInt(op)) {
+                        case 1: System.out.println ("Escribe el primer numero");
+                        br_numero = new BufferedReader(new InputStreamReader(System.in));
+                        valor_escrito = br_numero.readLine();
+                        valor_numerico1 = Integer.parseInt(valor_escrito);
+                        System.out.println ("El valor elegido es: " + valor_numerico1);
+                        break;
+                        case 2:System.out.println ("Escribe el segundo numero");
+                        br_numero = new BufferedReader(new InputStreamReader(System.in));
+                        valor_escrito = br_numero.readLine();
+                        valor_numerico2 = Integer.parseInt(valor_escrito);
+                        System.out.println ("El valor elegido es: " + valor_numerico2);
+                        break;
+                        case 3:;
+                        if(valor_numerico1 > valor_numerico2){
+                        System.out.println ("El primer numero es mayor");
+                        }else if(valor_numerico1 < valor_numerico2){
+                        System.out.println ("El segundo numero es mayor");    
+                        }else if(valor_numerico1 == valor_numerico2){
+                        System.out.println ("Ambos numeros son iguales");     
+                        }
 
-        manzanas_tienda = 20;
-        manzanas_queremos_comprar = 2;
-        precio_manzana = 0.40;
+                        break;
+                        case 4:;
+                        valor_division = valor_numerico1 / valor_numerico2;
+                        System.out.println ("La division es: "+valor_division); 
+                        break;
+                        case 5:;
+                        while(valor_numerico1 < valor_numerico2){
+                            
 
-        System.out.println("Vamos a comprar " + manzanas_queremos_comprar + " manzanas");
-        // modificamos el contenido de las variables numericas para representar la
-        // compra de manzanas
-        dinero_pagado = precio_manzana * manzanas_queremos_comprar;
-        manzanas_tienda = manzanas_tienda - manzanas_queremos_comprar;
-
-        // mostramos por consola el valor de las variables numericas. De forma implícita
-        // se convierte de de numero a string.
-        System.out.println("Nos han costado:" + dinero_pagado);
-        System.out.println("En la tienda quedan " + manzanas_tienda + " manzanas");
-
-        System.out.println("Quantas mazanas más quieres comprar?");
-        // Declaramos una variable compleja de nombre "br" y de tipo "BufferedReader".
-        // Las variables del tipo "BufferedReader" contienen funciones para leer datos
-        // por consola
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        // utilizamos la función "readLine" de la variable "br" para leer un dato por
-        // consola. Guardamos el número introducido en la variable "valor_escrito"
-        String valor_escrito = br.readLine();
-
-        /*
-         * Convertimos mediante una conversion explicita la variable "valor_escrito" a
-         * un valor entero para poder operar con él y lo almacenamos en la variable
-         */
-        manzanas_queremos_comprar = Integer.parseInt(valor_escrito);
-
-        System.out.println("Vamos a comprar " + manzanas_queremos_comprar + " manzanas");
-        // modificamos el contenido de las variables numericas para representar la
-        // compra de manzanas
-        dinero_pagado = precio_manzana * manzanas_queremos_comprar;
-        manzanas_tienda = manzanas_tienda - manzanas_queremos_comprar;
-        // mostramos por consola el valor de las variables numericas. De forma implícita
-        // se convierte de de numero a string.
-        System.out.println("Nos han costado:" + dinero_pagado);
-        System.out.println("En la tienda quedan " + manzanas_tienda + " manzanas");
-        
-        //Actividad 1.2
-        //2.	Al código anterior (ejercicio01.java) añade después del último System.out.println();  un código que indique 
-        //que la tienda tiene 15.5 litros de leche a 0.95€/litro y a continuación pida “Cuantos litros de leche vas a comprar”, 
-        //se reciba un número decimal escrito por el usuario y finalmente se indique cuantos litros quedan a la tienda y cuanto a costado la compra . 
-        //Se debe pode indicar un número con decimales para la compra.
-        
-        double total_leche_tienda = 15.5;
-        double precio_leche = 0.95;
-        double total_leche_compra;
-        double total_precio_compra;
-        System.out.println("Cuantos litros de leche vas a comprar?");
-        BufferedReader br_leche = new BufferedReader(new InputStreamReader(System.in));
-        String leche_comprada = br_leche.readLine();
-        total_leche_compra = Double.parseDouble(leche_comprada);
-        System.out.println("Has comprado " + total_leche_compra + " litros de leche, y te han costado" + (total_leche_compra * precio_leche) + " €");
-        System.out.println("Quedan en la tienda " + (total_leche_tienda - total_leche_compra ));
-        
-        
+                        System.out.println (valor_numerico1);
+                        valor_numerico1++;
+                        }
+                        break;
+                        default : break;
+                    }
+                } catch (IOException e) {
+                    System.out.println (e.toString());
+                }
+            } while (!op.equals("0"));
     }
-
 }
-
